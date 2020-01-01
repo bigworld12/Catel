@@ -1,4 +1,4 @@
-<Project Sdk="MSBuild.Sdk.Extras">
+﻿<Project Sdk="MSBuild.Sdk.Extras">
   <PropertyGroup>
     <!--<TargetFrameworks>net45;net46;net47;netcoreapp3.0;uap10.0;netstandard2.0;xamarin.ios10;monoandroid70</TargetFrameworks>-->
     <TargetFrameworks>net46;net47;net48;netcoreapp3.0;uap10.0.16299;netstandard2.0</TargetFrameworks>
@@ -6,7 +6,7 @@
     <RootNamespace>Catel</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
     <PackageId>Catel.Core</PackageId>
-    <PackageVersion>6.0.0-develop-local0103</PackageVersion>
+    <PackageVersion>6.0.0-develop-local0105</PackageVersion>
     <Description>Catel.Core library.</Description>
     <PackageTags>catel;argument;checking;guard;logging;log;ioc;dependency;resolver;factory;configuration;data;model;messaging;messenger;reflection;scope;scoping;caching;cache;weak;reference;event</PackageTags>
   </PropertyGroup>
@@ -23,7 +23,7 @@
     <PackageReference Include="ModuleInit.Fody" Version="2.1.0" PrivateAssets="all" />
     <PackageReference Include="Obsolete.Fody" Version="5.2.0" PrivateAssets="all" />
     <PackageReference Include="System.Collections.Immutable" Version="1.7.0" />
-    <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.6.0" />
     <PackageReference Include="System.Runtime.Serialization.Xml" Version="4.3.0" />
     <PackageReference Include="System.Runtime.WindowsRuntime" Version="4.6.0" />
   </ItemGroup>
@@ -34,40 +34,40 @@
   </ItemGroup>
   <!-- .NET 4.7 -->
   <ItemGroup Condition="'$(TargetFramework)' == 'net47'">
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.6.0" />
     <PackageReference Include="System.Runtime.Serialization.Formatters" Version="4.3.0" />
   </ItemGroup>
   <!-- .NET 4.8 -->
   <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.6.0" />
     <PackageReference Include="System.Runtime.Serialization.Formatters" Version="4.3.0" />
   </ItemGroup>
   <!-- .NET Core 3.0 -->
   <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.0'">
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.6.0" />
     <PackageReference Include="System.Runtime.Serialization.Formatters" Version="4.3.0" />
   </ItemGroup>
   <!-- UAP 10.0 -->
   <ItemGroup Condition="'$(TargetFramework)' == 'uap10.0'">
     <PackageReference Include="System.Runtime.InteropServices.WindowsRuntime" Version="4.3.0" />
-    <PackageReference Include="System.Runtime.WindowsRuntime" Version="4.7.0" />
+    <PackageReference Include="System.Runtime.WindowsRuntime" Version="4.6.0" />
     <PackageReference Include="System.Runtime.Serialization.Formatters" Version="4.3.0" />
   </ItemGroup>
   <!-- UAP 10.0.16299 -->
   <ItemGroup Condition="'$(TargetFramework)' == 'uap10.0.16299'">
     <PackageReference Include="System.ComponentModel.TypeConverter" Version="4.3.0" />
     <PackageReference Include="System.Runtime.InteropServices.WindowsRuntime" Version="4.3.0" />
-    <PackageReference Include="System.Runtime.WindowsRuntime" Version="4.7.0" />
+    <PackageReference Include="System.Runtime.WindowsRuntime" Version="4.6.0" />
     <PackageReference Include="System.Runtime.Serialization.Formatters" Version="4.3.0" />
   </ItemGroup>
   <!-- .NET Standard 2.0 -->
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.6.0" />
     <PackageReference Include="System.Runtime.Serialization.Formatters" Version="4.3.0" />
   </ItemGroup>
   <!-- Xamarin.iOS -->
   <ItemGroup Condition="'$(TargetFramework)' == 'xamarin.ios10'">
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.6.0" />
     <PackageReference Include="System.Runtime.Serialization.Formatters" Version="4.3.0" />
     <Reference Include="System.ComponentModel" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -77,7 +77,7 @@
   </ItemGroup>
   <!-- Xamarin.Android -->
   <ItemGroup Condition="'$(TargetFramework)' == 'monoandroid70'">
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.6.0" />
     <PackageReference Include="System.Runtime.Serialization.Formatters" Version="4.3.0" />
     <Reference Include="System.ComponentModel" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -198,5 +198,5 @@
     <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
   </ItemGroup>
   <Import Project="$(MSBuildProjectDirectory)\..\Directory.build.shared.explicit.props" Condition="Exists('$(MSBuildProjectDirectory)\..\Directory.build.shared.explicit.props')" />
-  <Import lower Project="$(MSBuildProjectDirectory)\..\Directory.build.shared.mat.props" Condition="Exists('$(MSBuildProjectDirectory)\..\Directory.build.shared.mat.props')" />
+  <Import Project="$(MSBuildProjectDirectory)\..\Directory.build.shared.mat.props" Condition="Exists('$(MSBuildProjectDirectory)\..\Directory.build.shared.mat.props')" />
 </Project>

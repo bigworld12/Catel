@@ -5,7 +5,7 @@
     <RootNamespace>Catel</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
     <PackageId>Catel.Serialization.Json</PackageId>
-    <PackageVersion>6.0.0-develop-local0103</PackageVersion>
+    <PackageVersion>6.0.0-develop-local0105</PackageVersion>
     <Description>Catel.Serialization.Json library.</Description>
     <PackageTags>catel;serialization;json</PackageTags>
   </PropertyGroup>

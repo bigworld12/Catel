@@ -5,7 +5,7 @@
     <RootNamespace>Catel.MVVM</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
     <PackageId>Catel.MVVM</PackageId>
-    <PackageVersion>6.0.0-develop-local0103</PackageVersion>
+    <PackageVersion>6.0.0-develop-local0105</PackageVersion>
     <Description>Catel.MVVM library.</Description>
     <PackageTags>catel;mvvm;view;viewmodel;model;interaction;interactivity;behaviors;xamarin</PackageTags>
   </PropertyGroup>
@@ -21,7 +21,7 @@
     <PackageReference Include="MethodTimer.Fody" Version="3.1.2" PrivateAssets="all" />
     <PackageReference Include="ModuleInit.Fody" Version="2.1.0" PrivateAssets="all" />
     <PackageReference Include="Obsolete.Fody" Version="5.2.0" PrivateAssets="all" />
-    <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.6.0" />
   </ItemGroup>
   <!-- .NET 4.6 -->
   <PropertyGroup Condition="'$(TargetFramework)' == 'net46'">
