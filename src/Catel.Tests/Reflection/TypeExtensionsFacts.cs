@@ -22,7 +22,7 @@ namespace Catel.Tests.Reflection
     {
         [TestCase(typeof(int), true)]
         [TestCase(typeof(int?), true)]
-        [TestCase(typeof(FastObservableCollection<TestModel>), false)]
+        [TestCase(typeof(DispatcherFastObservableCollection<TestModel>), false)]
         public void TheIsBasicTypeMethod(Type type, bool expectedValue)
         {
             Assert.AreEqual(expectedValue, type.IsBasicType());
@@ -39,7 +39,7 @@ namespace Catel.Tests.Reflection
 
         [TestCase(null, false)]
         [TestCase(typeof(int), false)]
-        [TestCase(typeof(FastObservableCollection<int>), true)]
+        [TestCase(typeof(DispatcherFastObservableCollection<int>), true)]
         public void TheIsCollectionMethod(Type type, bool expectedValue)
         {
             Assert.AreEqual(expectedValue, type.IsCollection());
@@ -47,7 +47,7 @@ namespace Catel.Tests.Reflection
 
         [TestCase(null, false)]
         [TestCase(typeof(int), false)]
-        [TestCase(typeof(FastObservableCollection<int>), false)]
+        [TestCase(typeof(DispatcherFastObservableCollection<int>), false)]
         [TestCase(typeof(Dictionary<int, bool>), true)]
         public void TheIsDictionaryMethod(Type type, bool expectedValue)
         {

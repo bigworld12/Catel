@@ -1,20 +1,18 @@
-﻿<Project Sdk="MSBuild.Sdk.Extras">
+<Project Sdk="MSBuild.Sdk.Extras">
   <PropertyGroup>
     <TargetFrameworks>net46;net47;net48;netcoreapp3.0;uap10.0.16299;netstandard2.0</TargetFrameworks>
     <AssemblyName>Catel.Serialization.Json</AssemblyName>
     <RootNamespace>Catel</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
     <PackageId>Catel.Serialization.Json</PackageId>
-    <PackageVersion>5.10.0-beta0013</PackageVersion>
+    <PackageVersion>6.0.0-develop-local0103</PackageVersion>
     <Description>Catel.Serialization.Json library.</Description>
     <PackageTags>catel;serialization;json</PackageTags>
   </PropertyGroup>
-  
   <PropertyGroup>
     <!-- SonarQube requires a project guid -->
     <ProjectGuid>34624660-FDCF-4D57-A3F4-6E6B03E7E743</ProjectGuid>
   </PropertyGroup>
-  
   <ItemGroup>
     <PackageReference Include="Catel.Fody" Version="4.4.0-alpha0078" PrivateAssets="all" />
     <PackageReference Include="Fody" Version="6.0.5" PrivateAssets="all">
@@ -25,11 +23,9 @@
     <PackageReference Include="NewtonSoft.Json" Version="12.0.3" />
     <PackageReference Include="Obsolete.Fody" Version="5.2.0" PrivateAssets="all" />
   </ItemGroup>
-  
   <ItemGroup>
     <ProjectReference Include="..\Catel.Core\Catel.Core.csproj" />
   </ItemGroup>
-  
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -37,18 +33,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
   </ItemGroup>
-  
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  
   <ItemGroup>
     <PackageReference Update="NETStandard.Library" Version="2.0.3" />
   </ItemGroup>
-  
   <Import Project="$(MSBuildProjectDirectory)\..\Directory.build.shared.explicit.props" Condition="Exists('$(MSBuildProjectDirectory)\..\Directory.build.shared.explicit.props')" />
   <Import Project="$(MSBuildProjectDirectory)\..\Directory.build.shared.mat.props" Condition="Exists('$(MSBuildProjectDirectory)\..\Directory.build.shared.mat.props')" />
 </Project>

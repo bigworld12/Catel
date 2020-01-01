@@ -29,12 +29,6 @@ namespace Catel.Collections
     {
         #region Constants
         private static readonly ILog Log = LogManager.GetCurrentClassLogger();
-
-        private static readonly Lazy<IDispatcherService> _dispatcherService = new Lazy<IDispatcherService>(() =>
-        {
-            var dependencyResolver = IoCConfiguration.DefaultDependencyResolver;
-            return dependencyResolver.Resolve<IDispatcherService>();
-        });
         #endregion
 
         #region Fields
@@ -50,7 +44,6 @@ namespace Catel.Collections
         /// </summary>
         public FastObservableCollection()
         {
-            AutomaticallyDispatchChangeNotifications = true;
         }
 
         /// <summary>
@@ -92,11 +85,7 @@ namespace Catel.Collections
         /// <value><c>True</c> if notifications are suspended, otherwise, <c>false</c>.</value>
         public bool NotificationsSuspended => _suspensionContext != null;
 
-        /// <summary>
-        /// Gets or sets a value indicating whether events should automatically be dispatched to the UI thread.
-        /// </summary>
-        /// <value><c>true</c> if events should automatically be dispatched to the UI thread; otherwise, <c>false</c>.</value>
-        public bool AutomaticallyDispatchChangeNotifications { get; set; }
+
         #endregion
 
         #region Methods
@@ -431,15 +420,7 @@ namespace Catel.Collections
                     }
                 }
             };
-
-            if (AutomaticallyDispatchChangeNotifications)
-            {
-                _dispatcherService.Value.BeginInvokeIfRequired(action);
-            }
-            else
-            {
-                action();
-            }
+            action();
         }
 
         /// <summary>
@@ -450,14 +431,7 @@ namespace Catel.Collections
         {
             if (_suspensionContext is null || _suspensionContext.Count == 0)
             {
-                if (AutomaticallyDispatchChangeNotifications)
-                {
-                    _dispatcherService.Value.BeginInvokeIfRequired(() => base.OnCollectionChanged(e));
-                }
-                else
-                {
-                    base.OnCollectionChanged(e);
-                }
+                base.OnCollectionChanged(e);
 
                 return;
             }
@@ -476,14 +450,7 @@ namespace Catel.Collections
         {
             if (_suspensionContext is null || _suspensionContext.Count == 0)
             {
-                if (AutomaticallyDispatchChangeNotifications)
-                {
-                    _dispatcherService.Value.BeginInvokeIfRequired(() => base.OnPropertyChanged(e));
-                }
-                else
-                {
-                    base.OnPropertyChanged(e);
-                }
+                base.OnPropertyChanged(e);
             }
         }
 

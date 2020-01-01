@@ -27,7 +27,6 @@ namespace Catel.Collections
     {
         #region Constants
         private static readonly ILog Log = LogManager.GetCurrentClassLogger();
-        private static readonly IDispatcherService _dispatcherService;
         #endregion
 
         #region Fields
@@ -47,8 +46,6 @@ namespace Catel.Collections
         /// </summary>
         static FastBindingList()
         {
-            var dependencyResolver = IoCConfiguration.DefaultDependencyResolver;
-            _dispatcherService = dependencyResolver.Resolve<IDispatcherService>();
         }
 
         /// <summary>
@@ -56,7 +53,6 @@ namespace Catel.Collections
         /// </summary>
         public FastBindingList()
         {
-            AutomaticallyDispatchChangeNotifications = true;
         }
 
         /// <summary>
@@ -101,11 +97,6 @@ namespace Catel.Collections
             }
         }
 
-        /// <summary>
-        /// Gets or sets a value indicating whether events should automatically be dispatched to the UI thread.
-        /// </summary>
-        /// <value><c>true</c> if events should automatically be dispatched to the UI thread; otherwise, <c>false</c>.</value>
-        public bool AutomaticallyDispatchChangeNotifications { get; set; }
 
         #region Overrides of BindingList
         /// <summary>
@@ -400,7 +391,7 @@ namespace Catel.Collections
         /// <summary>
         /// Notifies external classes of property changes.
         /// </summary>
-        protected void NotifyChanges()
+        protected virtual void NotifyChanges()
         {
             Action action = () =>
             {
@@ -432,14 +423,7 @@ namespace Catel.Collections
                 }
             };
 
-            if (AutomaticallyDispatchChangeNotifications)
-            {
-                _dispatcherService.BeginInvokeIfRequired(action);
-            }
-            else
-            {
-                action();
-            }
+            action();
         }
 
         /// <summary>
@@ -467,15 +451,7 @@ namespace Catel.Collections
                         e.PropertyDescriptor);
                 }
             }
-
-            if (AutomaticallyDispatchChangeNotifications)
-            {
-                _dispatcherService.BeginInvokeIfRequired(() => base.OnListChanged(e));
-            }
-            else
-            {
-                base.OnListChanged(e);
-            }
+            base.OnListChanged(e);
         }
 
         #region Overrides of BindingList

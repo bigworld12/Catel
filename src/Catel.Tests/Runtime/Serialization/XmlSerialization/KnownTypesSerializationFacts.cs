@@ -217,7 +217,7 @@ namespace Catel.Tests.Runtime.Serialization.XmlSerialization
             {
                 typeof (IEnumerable<IParams>), typeof (ICollection<IParams>),
                 typeof (IDictionary<string, IParams>), typeof (IDictionary<IParams, string>),
-                typeof (IList<IParams>), typeof (Collection<IParams>), typeof (FastObservableCollection<IParams>),
+                typeof (IList<IParams>), typeof (Collection<IParams>), typeof (DispatcherFastObservableCollection<IParams>),
                 typeof (IEnumerable<KeyValuePair<IParams, object>>), typeof (IEnumerable<Lazy<IParams>>),
             };
 
@@ -240,7 +240,7 @@ namespace Catel.Tests.Runtime.Serialization.XmlSerialization
             var containerList = new ICollection[]
             {
                 new Collection<IParams>(itemList), new List<IParams>(itemList),
-                new FastObservableCollection<IParams>(itemList),
+                new DispatcherFastObservableCollection<IParams>(itemList),
                 new Collection<KeyValuePair<IParams, object>>(new[]
                 {
                     new KeyValuePair<IParams, object>(itemList[0], new object()),

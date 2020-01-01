@@ -26,7 +26,6 @@
     {
         #region Fields & Properties
         private static readonly ILog Log = LogManager.GetCurrentClassLogger();
-        private readonly Lazy<IDispatcherService> _dispatcherService = new Lazy<IDispatcherService>(() => IoCConfiguration.DefaultDependencyResolver.Resolve<IDispatcherService>());
 
         /// <summary>
         /// The current suspension context.
@@ -58,11 +57,7 @@
 #endif
         private readonly SerializationInfo _serializationInfo;
 
-        /// <summary>
-        /// Gets or sets a value indicating whether events should automatically be dispatched to the UI thread.
-        /// </summary>
-        /// <value><c>true</c> if events should automatically be dispatched to the UI thread; otherwise, <c>false</c>.</value>
-        public bool AutomaticallyDispatchChangeNotifications { get; set; } = true;
+
 
 
 
@@ -785,7 +780,7 @@
         /// Gets or sets the value with the specified key.
         /// </summary>
         /// <param name="key">The key of the value to get.</param>
-        /// <returns>The value associated with the specified key, or <see langword="null" /> if <paramref name="key"/> is not in the dictionary or <paramref name="key"/> is of a type that is not assignable to the key of type <typeparamref name="TKey"/> of the <see cref="ObservableDictionary{TKey,TValue}"/>.</returns>
+        /// <returns>The value associated with the specified key, or <see langword="null" /> if <paramref name="key"/> is not in the dictionary or <paramref name="key"/> is of a type that is not assignable to the key of type <typeparamref name="TKey"/> of the <see cref="FastObservableDictionary{TKey,TValue}"/>.</returns>
         public object this[object key]
         {
             get
@@ -944,14 +939,7 @@
         {
             if (_suspensionContext is null || _suspensionContext.Count == 0)
             {
-                if (AutomaticallyDispatchChangeNotifications)
-                {
-                    _dispatcherService.Value.BeginInvokeIfRequired(() => PropertyChanged?.Invoke(this, eventArgs));
-                }
-                else
-                {
-                    PropertyChanged?.Invoke(this, eventArgs);
-                }
+                PropertyChanged?.Invoke(this, eventArgs);
             }
         }
 
@@ -960,15 +948,7 @@
 
             if (_suspensionContext is null || _suspensionContext.Count == 0)
             {
-                if (AutomaticallyDispatchChangeNotifications)
-                {
-                    _dispatcherService.Value.BeginInvokeIfRequired(() => CollectionChanged?.Invoke(this, eventArgs));
-                }
-                else
-                {
-                    CollectionChanged?.Invoke(this, eventArgs);
-                }
-
+                CollectionChanged?.Invoke(this, eventArgs);
                 return;
             }
 
@@ -1038,7 +1018,7 @@
         /// <summary>
         /// Notifies external classes of property changes.
         /// </summary>
-        protected void NotifyChanges()
+        protected virtual void NotifyChanges()
         {
             Action action = () =>
             {
@@ -1059,14 +1039,7 @@
                 }
             };
 
-            if (AutomaticallyDispatchChangeNotifications)
-            {
-                _dispatcherService.Value.BeginInvokeIfRequired(action);
-            }
-            else
-            {
-                action();
-            }
+            action();
         }
         public bool IsDirty { get; private set; }
 
