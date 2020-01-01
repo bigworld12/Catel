@@ -25,6 +25,7 @@
     <PackageReference Include="System.Collections.Immutable" Version="1.7.0" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
     <PackageReference Include="System.Runtime.Serialization.Xml" Version="4.3.0" />
+    <PackageReference Include="System.Runtime.WindowsRuntime" Version="4.6.0" />
   </ItemGroup>
   <!-- .NET 4.6 -->
   <ItemGroup Condition="'$(TargetFramework)' == 'net46'">
@@ -197,5 +198,5 @@
     <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
   </ItemGroup>
   <Import Project="$(MSBuildProjectDirectory)\..\Directory.build.shared.explicit.props" Condition="Exists('$(MSBuildProjectDirectory)\..\Directory.build.shared.explicit.props')" />
-  <Import Project="$(MSBuildProjectDirectory)\..\Directory.build.shared.mat.props" Condition="Exists('$(MSBuildProjectDirectory)\..\Directory.build.shared.mat.props')" />
+  <Import lower Project="$(MSBuildProjectDirectory)\..\Directory.build.shared.mat.props" Condition="Exists('$(MSBuildProjectDirectory)\..\Directory.build.shared.mat.props')" />
 </Project>
